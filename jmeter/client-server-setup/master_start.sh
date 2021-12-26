@@ -15,7 +15,7 @@ private_ip=$(aws autoscaling describe-auto-scaling-instances --region $Region --
 
 elb_dns=$(aws ssm get-parameter --name $SSMParameter --region $Region --query Parameter.Value --output text)
 
-#sed -i 's/$DNSToBeReplaced/$elb_dns/g' $JMXFilePath
+sed -i 's/$DNSToBeReplaced/$elb_dns/g' $JMXFilePath
 
 data_string="${private_ip[*]}"
 echo "${data_string//${IFS:0:1}/,}" | xargs -i  $JmeterPath -n -t $JMXFilePath -R '{}' -l $ResultJtlFileName -e -o $ResultFolder 
