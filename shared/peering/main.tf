@@ -23,7 +23,7 @@ data "terraform_remote_state" "app-server" {
 
   config = {
     # Replace this with your bucket name!
-    bucket = "terraform-up-and-running-state-gsaw"
+    bucket = "apache-jmeter-terraform-current-state"
     key    = "app-server/s3/terraform.tfstate"
     region = "ap-northeast-1"
   }
@@ -35,7 +35,7 @@ data "terraform_remote_state" "jmeter" {
 
   config = {
     # Replace this with your bucket name!
-    bucket = "terraform-up-and-running-state-gsaw"
+    bucket = "apache-jmeter-terraform-current-state"
     key    = "jmeter/s3/terraform.tfstate"
     region = "ap-northeast-1"
   }
