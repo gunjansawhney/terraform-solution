@@ -1,5 +1,7 @@
 provider "aws" {
   region = "ap-northeast-1"
+  shared_credentials_file = "/var/lib/jenkins/.aws/credentials"
+
 }
 
 resource "aws_s3_bucket" "terraform_state" {
