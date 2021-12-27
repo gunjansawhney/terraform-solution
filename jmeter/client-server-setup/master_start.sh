@@ -20,7 +20,7 @@ sed -i 's/$DNSToBeReplaced/$elb_dns/g' $JMXFilePath
 
 rm -f "$JmeterFolder/$ResultJtlFileName"
 rm -rf "$JmeterFolder/$ResultFolder"
-mkdir -p "$JmeterFolder/$ResultFolder"
+
 
 data_string="${private_ip[*]}"
 echo "${data_string//${IFS:0:1}/,}" | xargs -i  $JmeterPath -n -t $JMXFilePath -R '{}' -l $ResultJtlFileName -e -o $ResultFolder 
