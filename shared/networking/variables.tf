@@ -2,6 +2,10 @@ variable "resource_group" {
     default = "RG-1"
 }
 
+variable "vpc_name" {
+	default = "vpc"
+}
+
 variable "vpc_cidr" {   
     default = "10.251.184.0/24"
 }

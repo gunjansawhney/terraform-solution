@@ -32,18 +32,3 @@ resource "aws_dynamodb_table" "terraform_locks" {
     type = "S"
   }
 }
-
-
-
-terraform {
-  backend "s3" {
-    # Replace this with your bucket name!
-    bucket         = "apache-jmeter-terraform-current-state"
-    key            = "initilialisation/terraform.tfstate"
-    region         = "ap-northeast-1"
-
-    # Replace this with your DynamoDB table name!
-    dynamodb_table = "apache-jmeter-terraform-current-state-locks"
-    encrypt        = true
-  }
-}

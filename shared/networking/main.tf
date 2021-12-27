@@ -3,7 +3,7 @@ resource "aws_vpc" "vpc" {
   enable_dns_hostnames = true
   enable_dns_support   = true
   tags = {
-    Name        = "${var.resource_group}-vpc"
+    Name        = "${var.resource_group}-${var.vpc_name}"
     ResourceGroup = var.resource_group
   }
 }
@@ -13,7 +13,7 @@ resource "aws_vpc" "vpc" {
 resource "aws_internet_gateway" "ig" {
   vpc_id = aws_vpc.vpc.id
   tags = {
-    Name        = "${var.resource_group}-igw"
+    Name        = "${var.resource_group}-${var.vpc_name}-igw"
     ResourceGroup = var.resource_group
   }
 }
@@ -28,7 +28,7 @@ resource "aws_subnet" "public_subnet" {
   availability_zone       = element(local.selected_availability_zones,count.index)
   map_public_ip_on_launch = true
   tags = {
-    Name        = "${var.resource_group}-${element(local.selected_availability_zones, count.index)}-public-subnet"
+    Name        = "${var.resource_group}-${element(local.selected_availability_zones, count.index)}-${var.vpc_name}-public-subnet"
     ResourceGroup = var.resource_group
   }
 }
@@ -41,7 +41,7 @@ resource "aws_subnet" "private_subnet" {
   cidr_block              = element(var.private_subnets_cidr, count.index)
   availability_zone       = element(local.selected_availability_zones,   count.index)
   tags = {
-    Name        = "${var.resource_group}-${element(local.selected_availability_zones, count.index)}-private-subnet"
+    Name        = "${var.resource_group}-${element(local.selected_availability_zones, count.index)}-${var.vpc_name}-private-subnet"
     ResourceGroup = var.resource_group
   }
 }
@@ -53,7 +53,7 @@ resource "aws_eip" "nat_eip" {
   depends_on = [aws_internet_gateway.ig]
 
   tags = {
-    Name        = "${var.resource_group}-eip"
+    Name        = "${var.resource_group}-${var.vpc_name}-eip"
     ResourceGroup = var.resource_group
   }
 }
@@ -65,7 +65,7 @@ resource "aws_nat_gateway" "nat" {
   subnet_id     = element(aws_subnet.public_subnet.*.id, 0)
   depends_on    = [aws_internet_gateway.ig]
   tags = {
-    Name        = "${var.resource_group}-nat"
+    Name        = "${var.resource_group}-${var.vpc_name}-nat"
     ResourceGroup = var.resource_group
   }
 }
@@ -75,7 +75,7 @@ resource "aws_nat_gateway" "nat" {
 resource "aws_route_table" "private" {
   vpc_id = aws_vpc.vpc.id
   tags = {
-    Name        = "${var.resource_group}-private-route-table"
+    Name        = "${var.resource_group}-${var.vpc_name}-private-route-table"
     ResourceGroup = var.resource_group
   }
 }
@@ -85,7 +85,7 @@ resource "aws_route_table" "private" {
 resource "aws_route_table" "public" {
   vpc_id = aws_vpc.vpc.id
   tags = {
-    Name        = "${var.resource_group}-public-route-table"
+    Name        = "${var.resource_group}-${var.vpc_name}-public-route-table"
     ResourceGroup = var.resource_group
   }
 }

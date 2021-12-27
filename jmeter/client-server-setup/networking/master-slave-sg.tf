@@ -24,6 +24,12 @@ resource "aws_security_group" "commong_sg" {
           protocol    = "-1"
           self        = "true"
         }
+  ingress {
+          from_port   = "0"
+          to_port     = "0"
+          protocol    = "-1"
+          cidr_blocks = ["${var.jenkins_ip}"]
+        }
 
   egress {
         from_port = "0"
@@ -46,8 +52,15 @@ resource "aws_security_group" "commong_sg" {
         cidr_blocks = ["0.0.0.0/0"]
 
         }
+  egress {
+          from_port   = "0"
+          to_port     = "0"
+          protocol    = "-1"
+          cidr_blocks = ["${var.jenkins_ip}"]
+        }
 
   tags = {
+    Name = "${var.resource_group}-ec2-sg"
     ResourceGroup = var.resource_group
   }
 }
