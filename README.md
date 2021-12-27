@@ -42,7 +42,7 @@ The solution is divided into three parts:
 4. LVM is needed to extend the disk partition if required at later point of time.
 
 ## Solution Architecture Diagram
-
+![Graph](./graph/Jmeter-Apache.png)
 
 ## Areas of Improvment
   
