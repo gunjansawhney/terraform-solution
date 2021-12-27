@@ -37,7 +37,7 @@ The solution is divided into three parts:
 
 ## Assumptions & Considerations
 1. Both the VPCs are in the same account and in the same region.
-2. There is a separate Jenkins or CICD server which is used to spin up the infrastructure.
+2. Separate running Jenkins or CICD server which is used to spin up the infrastructure.
 3. The PEM file is already on Jenkins machine so that it can SSH into the master server to run the ondemand load test.
 4. LVM is needed to extend the disk partition if required at later point of time.
 
