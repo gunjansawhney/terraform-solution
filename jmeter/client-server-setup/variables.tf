@@ -6,7 +6,7 @@ variable "public_rtb_id" {}
 
 variable "aws_ami" {
   description = "ID of AMI to use for the instances. IMPORTANT: Currently only Amazon Linux is supported!"
-  default     = "ami-0218d08a1f9dac831"
+  default     = "ami-0ed9277fb7eb570c9"
 }
 
 variable "vpc_id" {

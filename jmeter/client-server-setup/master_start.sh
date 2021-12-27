@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-Region="ap-northeast-1"
+Region="us-east-1"
 ASGName="Jmeter-Resource-Group-jmeter-slave-ASG"
 SSMParameter="/loadbalancer/dns"
 DNSToBeReplaced="google.com"
@@ -12,7 +12,7 @@ ResultJtlFileName="result.jtl"
 ResultFolder="result"
 
 
-private_ip=$(aws autoscaling describe-auto-scaling-instances --region $Region --output text --query "AutoScalingInstances[?AutoScalingGroupName=='$ASGName'].InstanceId" | xargs -n1 aws ec2 describe-instances --instance-ids $ID --region ap-northeast-1 --query "Reservations[].Instances[].PrivateIpAddress" --output text)
+private_ip=$(aws autoscaling describe-auto-scaling-instances --region $Region --output text --query "AutoScalingInstances[?AutoScalingGroupName=='$ASGName'].InstanceId" | xargs -n1 aws ec2 describe-instances --instance-ids $ID --region $Region --query "Reservations[].Instances[].PrivateIpAddress" --output text)
 
 elb_dns=$(aws ssm get-parameter --name $SSMParameter --region $Region --query Parameter.Value --output text)
 

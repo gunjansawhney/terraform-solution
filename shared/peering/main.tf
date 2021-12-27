@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "ap-northeast-1"
+  region = "us-east-1"
   shared_credentials_file = "/var/lib/jenkins/.aws/credentials"
 }
 
@@ -7,11 +7,11 @@ provider "aws" {
 terraform {
   backend "s3" {
     # Replace this with your bucket name!
-    bucket         = "apache-jmeter-terraform-current-state"
+    bucket         = "apache-jmeter-terraform-current-state-us"
     key            = "vpc-peering/s3/terraform.tfstate"
-    region         = "ap-northeast-1"
+    region         = "us-east-1"
     # Replace this with your DynamoDB table name!
-    dynamodb_table = "apache-jmeter-terraform-current-state-locks"
+    dynamodb_table = "apache-jmeter-terraform-current-state-locks-us"
     encrypt        = true
   }
 }
@@ -23,9 +23,9 @@ data "terraform_remote_state" "app-server" {
 
   config = {
     # Replace this with your bucket name!
-    bucket = "apache-jmeter-terraform-current-state"
+    bucket = "apache-jmeter-terraform-current-state-us"
     key    = "app-server/s3/terraform.tfstate"
-    region = "ap-northeast-1"
+    region = "us-east-1"
   }
 }
 
@@ -35,9 +35,9 @@ data "terraform_remote_state" "jmeter" {
 
   config = {
     # Replace this with your bucket name!
-    bucket = "apache-jmeter-terraform-current-state"
+    bucket = "apache-jmeter-terraform-current-state-us"
     key    = "jmeter/s3/terraform.tfstate"
-    region = "ap-northeast-1"
+    region = "us-east-1"
   }
 }
 

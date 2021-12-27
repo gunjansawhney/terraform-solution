@@ -17,7 +17,7 @@ variable "elb_sg_id" {}
 variable "private_rtb_id" {}
 
 variable "image_id" {
-	default = "ami-0be4c0b05bbeb2afd"
+	default = "ami-029c0fbe456d58bd1"
 }
   
 
