@@ -2,6 +2,21 @@ provider "aws" {
   region = "ap-northeast-1"
 }
 
+
+terraform {
+  backend "s3" {
+    # Replace this with your bucket name!
+    bucket         = "apache-jmeter-terraform-current-state"
+    key            = "app-server/s3/terraform.tfstate"
+    region         = "ap-northeast-1"
+    # Replace this with your DynamoDB table name!
+    dynamodb_table = "apache-jmeter-terraform-current-state-locks"
+    encrypt        = true
+  }
+}
+
+
+
 data "terraform_remote_state" "app-server" {
   backend = "s3"
 
