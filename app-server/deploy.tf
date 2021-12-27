@@ -5,11 +5,11 @@ provider "aws" {
 terraform {
   backend "s3" {
     # Replace this with your bucket name!
-    bucket         = "terraform-up-and-running-state-gsaw"
+    bucket         = "apache-jmeter-terraform-current-state"
     key            = "app-server/s3/terraform.tfstate"
     region         = "ap-northeast-1"
     # Replace this with your DynamoDB table name!
-    dynamodb_table = "terraform-up-and-running-locks-gsaw"
+    dynamodb_table = "apache-jmeter-terraform-current-state-locks"
     encrypt        = true
   }
 }
