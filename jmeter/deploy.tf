@@ -30,6 +30,7 @@ module "vpc" {
 module "security" {
 	source = "./client-server-setup/networking"
 	vpc_id = module.vpc.vpc_id
+	jenkins_ip = "54.95.67.146/32"
 	resource_group = "Jmeter-Resource-Group"
 
 
@@ -45,7 +46,6 @@ module "jmeter" {
 	master_ssh_public_key_file = "/var/lib/jenkins/keys/ec2-pem-tokyo.pub"
 	master_ssh_private_key_file = "/var/lib/jenkins/keys/ec2-pem-tokyo.pem"
 	slave_ssh_public_key_file  = "/var/lib/jenkins/keys/ec2-pem-tokyo.pub"
-	jenkins_ip = "54.95.67.146/32"
 	resource_group = "Jmeter-Resource-Group"
 }
 
