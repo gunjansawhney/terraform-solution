@@ -23,8 +23,8 @@ rm -rf "$JmeterFolder/$ResultFolder"
 
 
 data_string="${private_ip[*]}"
-echo "${data_string//${IFS:0:1}/,}" | xargs -i  $JmeterPath -n -t $JMXFilePath -R '{}' -l $ResultJtlFileName 
+echo "${data_string//${IFS:0:1}/,}" | xargs -i  $JmeterPath -n -t $JMXFilePath -R '{}' -l $JmeterFolder/$ResultJtlFileName 
 
- $JmeterPath -g $ResultJtlFileName  -o $ResultFolder
+ $JmeterPath -g $JmeterFolder/$ResultJtlFileName  -o $JmeterFolder/$ResultFolder
 
- aws s3 cp $ResultJtlFileName/index.html s3://apache-jmeter-results
+ aws s3 cp $JmeterFolder/$ResultFolder/index.html s3://apache-jmeter-results
