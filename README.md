@@ -4,7 +4,7 @@
 
 ## Introduction
 
-This is a simple, reusable terraform code (using standard modules) to simulate JMeter master slave load testing over the VPC peering. The stack is divided into two parts.
+This is a simple, reusable terraform code (modules) to simulate JMeter master slave load testing over the VPC peering. The stack is divided into two parts.
 1. Application Part (VPC 1) - Consisting of Apache servers in autoscaling having two disks each extended via LVM (Apache logs folder are available on this disk). The apache servers are exposed via private classic load balancer.
 2. JMeter (VPC 2) - Consisting of JMeter master and client setup in autoscaling to simulate the load on the apache servers. 
 
