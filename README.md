@@ -51,6 +51,7 @@ The solution is divided into three parts:
 3. Store and use keys from vault/secrets.
 4. Error Handling while using Jenkins.
 5. Jenkins jobs to destroy the requested component.
+6. Use AWS launch template insteas of launch configuration to the latest features and improvements for AWS ASGs.
 
   
 ## How to Contribute
