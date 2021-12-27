@@ -67,5 +67,5 @@ output "vpc_region" {
 }
 
 output "master_public_ip" {
-	value = modue.jmeter.master_public_ip
+	value = module.jmeter.master_public_ip
 }
