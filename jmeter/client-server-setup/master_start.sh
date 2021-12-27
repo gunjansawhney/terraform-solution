@@ -18,6 +18,7 @@ elb_dns=$(aws ssm get-parameter --name $SSMParameter --region $Region --query Pa
 
 sed -i 's/$DNSToBeReplaced/$elb_dns/g' $JMXFilePath
 
+rm -f "$JmeterFolder/$ResultJtlFileName"
 rm -rf "$JmeterFolder/$ResultFolder"
 mkdir -p "$JmeterFolder/$ResultFolder"
 
