@@ -22,7 +22,7 @@ module "vpc" {
 	vpc_name = "Apache"
 	vpc_cidr = "10.251.184.0/24"
 	public_subnets_cidr = ["10.251.184.0/26","10.251.184.64/26"]
-	private_subnets_cidr ["10.251.184.128/26","10.251.184.192/26"]
+	private_subnets_cidr = ["10.251.184.128/26","10.251.184.192/26"]
 	resource_group = "VPC-Resource-Group"
 }
 
