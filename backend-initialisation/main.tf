@@ -5,7 +5,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "terraform_state" {
-  bucket = "apache-jmeter-terraform-current-state-us"
+  bucket = "current-state-us"
 
   # Enable versioning so we can see the full revision history of our state files
   versioning {
@@ -24,7 +24,7 @@ resource "aws_s3_bucket" "terraform_state" {
 
 
 resource "aws_dynamodb_table" "terraform_locks" {
-  name         = "apache-jmeter-terraform-current-state-locks-us"
+  name         = "current-state-locks-us"
   billing_mode = "PAY_PER_REQUEST"
   hash_key     = "LockID"
   attribute {

@@ -7,11 +7,11 @@ provider "aws" {
 terraform {
   backend "s3" {
     # Replace this with your bucket name!
-    bucket         = "apache-jmeter-terraform-current-state-us"
+    bucket         = "current-state-us"
     key            = "vpc-peering/s3/terraform.tfstate"
     region         = "us-east-1"
     # Replace this with your DynamoDB table name!
-    dynamodb_table = "apache-jmeter-terraform-current-state-locks-us"
+    dynamodb_table = "current-state-locks-us"
     encrypt        = true
   }
 }
@@ -23,7 +23,7 @@ data "terraform_remote_state" "app-server" {
 
   config = {
     # Replace this with your bucket name!
-    bucket = "apache-jmeter-terraform-current-state-us"
+    bucket = "current-state-us"
     key    = "app-server/s3/terraform.tfstate"
     region = "us-east-1"
   }
@@ -35,7 +35,7 @@ data "terraform_remote_state" "jmeter" {
 
   config = {
     # Replace this with your bucket name!
-    bucket = "apache-jmeter-terraform-current-state-us"
+    bucket = "current-state-us"
     key    = "jmeter/s3/terraform.tfstate"
     region = "us-east-1"
   }
