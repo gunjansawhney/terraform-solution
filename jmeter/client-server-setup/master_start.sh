@@ -5,6 +5,7 @@ Region="ap-northeast-1"
 ASGName="Jmeter-Resource-Group-jmeter-slave-ASG"
 SSMParameter="/loadbalancer/dns"
 DNSToBeReplaced="google.com"
+JmeterFolder='/jmeter-master'
 JMXFilePath="/jmeter-master/load-test-script.jmx"
 JmeterPath="./apache-jmeter-3.3/bin/jmeter"
 ResultJtlFileName="result.jtl"
@@ -17,5 +18,6 @@ elb_dns=$(aws ssm get-parameter --name $SSMParameter --region $Region --query Pa
 
 sed -i 's/$DNSToBeReplaced/$elb_dns/g' $JMXFilePath
 
+mkdir -p "$JmeterFolder/$ResultFolder"
 data_string="${private_ip[*]}"
 echo "${data_string//${IFS:0:1}/,}" | xargs -i  $JmeterPath -n -t $JMXFilePath -R '{}' -l $ResultJtlFileName -e -o $ResultFolder 
