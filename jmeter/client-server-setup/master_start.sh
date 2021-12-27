@@ -27,4 +27,4 @@ echo "${data_string//${IFS:0:1}/,}" | xargs -i  $JmeterPath -n -t $JMXFilePath -
 
  $JmeterPath -g $JmeterFolder/$ResultJtlFileName  -o $JmeterFolder/$ResultFolder
 
- aws s3 cp -r $JmeterFolder/$ResultFolder/ s3://apache-jmeter-results/
+ aws s3 cp $JmeterFolder/$ResultFolder/ s3://apache-jmeter-results/ --recursive
