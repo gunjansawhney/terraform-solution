@@ -49,8 +49,9 @@ The solution is divided into three parts:
 1. Create dynamic Security groups and dynamic listener and health-checks for Load Balancer.
 2. Capability to create Jmeter Master from different AMIs and user.
 3. Store and use keys from vault/secrets.
+4. Error Handling while using Jenkins.
+5. Jenkins jobs to destroy the requested component.
 
-  
   
 ## How to Contribute
 
