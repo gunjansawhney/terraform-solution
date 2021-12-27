@@ -65,3 +65,7 @@ output "account_id" {
 output "vpc_region" {
 	value = module.vpc.region
 }
+
+output "master_public_ip" {
+	value = modue.jmeter.master_public_ip
+}
