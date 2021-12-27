@@ -79,7 +79,7 @@ resource "aws_key_pair" "jmeter-master-keypair" {
 /*==== Jmeter Master IAM Role to fetch ELB DNS Name stored in SSM Parameter ======*/
 
 resource "aws_iam_role" "jmeter_master_iam_role" {
-    name = "jmeter_master_iam_role"
+    name = "${var.resource_group}-jmeter_master_iam_role"
     path = "/"
     assume_role_policy = <<EOF
 {
@@ -106,8 +106,8 @@ resource "aws_iam_role" "jmeter_master_iam_role" {
 /*==== Role Policy ======*/
 
 resource "aws_iam_policy" "policy" {
-  name        = "SSMPolicy"
-  description = "SSMPolicy"
+  name        = "${var.resource_group}-policy"
+  description = "SS3 and SSM Access"
 
   policy = jsonencode({
     Version = "2012-10-17"
