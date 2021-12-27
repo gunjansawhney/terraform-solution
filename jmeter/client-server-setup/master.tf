@@ -119,6 +119,13 @@ resource "aws_iam_policy" "policy" {
             ],
             "Resource": "*"
         },
+    {
+            "Effect": "Allow",
+            "Action": [
+                "s3:*"
+            ],
+            "Resource": "*"
+        },
         {
             "Effect": "Allow",
             "Action": [
